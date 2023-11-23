@@ -3,6 +3,7 @@ import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 import BookOverview from "./components/BookOverview";
 import Landingpage from "./components/Landingpage";
+import SingleBookPage from "./components/SingleBookPage";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/books" element={<BookOverview />} />
+        <Route path="/books/:id" element={<SingleBookPage />} />
       </Routes>
     </>
   );

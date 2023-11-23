@@ -4,8 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Form({}) {
-  const showToastMessage = () => {
-    toast.success(`Book Submitted !`, {
+  const showToastMessage = (title) => {
+    toast.success(`${title} Submitted !`, {
       position: toast.POSITION.BOTTOM_CENTER,
     });
   };
@@ -31,7 +31,8 @@ export default function Form({}) {
       .post("http://localhost:3000/books", newBook)
       .then((response) => {
         console.log("Response:", response.data);
-        showToastMessage();
+        showToastMessage(response.data.title);
+        setNewBooks({});
       })
       .catch((err) => console.log(err));
   };
