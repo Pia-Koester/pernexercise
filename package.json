@@ -1,0 +1,19 @@
+{
+  "name": "pernexercise",
+  "version": "1.0.0",
+  "description": "WBS Coding School Bootcamp Module 9 - PERN",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env index.js",
+    "dev": "nodemon --env-file=.env index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
+    "pg": "^8.11.3"
+  }
+}
