@@ -1,39 +1,46 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import axios from "axios";
-import BookCard from "./components/BookCard"
-import Form from "./components/Form";
+import { Routes, Route, NavLink } from "react-router-dom";
+import BookOverview from "./components/BookOverview";
+import Landingpage from "./components/Landingpage";
 
 function App() {
-  const [books, setBooks] = useState(null);
-
-  useEffect(() => {
-    getBooks();
-    console.log(books);
-  }, []);
-
-  const getBooks = async () => {
-    try {
-      const result = await axios("http://localhost:3000/books");
-      setBooks(result.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-
   return (
     <>
-      <h1>Books</h1>
-    <Form setBooks={setBooks}/>
-      <div>
-        {!books ? (
-          <p>loading</p>
-        ) : ( books.filter((book) => book.is_active).map((book) => {
-            return <BookCard key={book.id} book={book}/>;
-          })
-        )}
-      </div>
+      <nav className="navbar">
+        <ul>
+          <li>
+            <NavLink
+              to="/"
+              style={({ isActive }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "red" : "",
+                };
+              }}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/books"
+              style={({ isActive }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isActive ? "red" : "",
+                };
+              }}
+            >
+              Books
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Landingpage />} />
+        <Route path="/books" element={<BookOverview />} />
+      </Routes>
     </>
   );
 }

@@ -5,6 +5,17 @@
   text-align: center;
 }
 
+
+.navbar ul {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.navbar li {
+  list-style: none;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
